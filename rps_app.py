@@ -1,16 +1,16 @@
 from keras.preprocessing.image import load_img, img_to_array
 import numpy as np
-from PIL import Image
+from PIL import ImageOps, Image
 import pickle
-model = pickle.load(open("pickle_fruit_model", "rb"))
+import cv2
+
+model = pickle.load(open("file", "rb"))
 
 import streamlit as st
 
 st.write("App")
 st.write("Something")
-file = st.file_uploader("Pleasse upload an image file", type=["jpg", "png"])
-
-
+file = st.file_uploader("Please upload an image file", type=["jpg", "png"])
 
 labels = {0: 'apple', 1: 'banana', 2: 'beetroot', 3: 'bell pepper', 4: 'cabbage', 5: 'capsicum', 6: 'carrot',
           7: 'cauliflower', 8: 'chilli pepper', 9: 'corn', 10: 'cucumber', 11: 'eggplant', 12: 'garlic', 13: 'ginger',
@@ -21,14 +21,14 @@ labels = {0: 'apple', 1: 'banana', 2: 'beetroot', 3: 'bell pepper', 4: 'cabbage'
 
 
 def processed_img(img_data):
-    size = (150, 150)
+    data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
+    size = (224, 224)
     image = ImageOps.fit(img_data, size, Image.ANTIALIAS)
-    image = np.asarray(image)
-    img = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-    img_resize = (cv2.resize(img, dsize=(75, 75), interpolation=cv2.INTER_CUBIC)) / 255.
+    image_array = np.asarray(image)
+    normalized_image_array = (image_array.astype(np.float32) / 127.0) - 1
 
-    img_reshape = img_resize[np.newaxis, ...]
-    answer = model.predict(img_reshape)
+    data[0] = normalized_image_array
+    answer = model.predict(data)
     y_class = answer.argmax(axis=-1)
     y = " ".join(str(x) for x in y_class)
     y = int(y)
@@ -36,11 +36,16 @@ def processed_img(img_data):
     return res.capitalize()
 
 
-if file is None:
-    st.text("Please upload an image file")
-else:
-    image = Image.open(file)
-    st.image(image, use_column_width=True)
-    prediction = processed_img(image)
+def main():
+    if file is None:
+        st.text("Please upload an image file")
+    else:
+        image = Image.open(file)
+        st.image(image, use_column_width=True)
+        prediction = processed_img(image)
 
-    st.write(prediction)
+        st.write(prediction)
+
+
+if __name__ == "__main__":
+    main()
