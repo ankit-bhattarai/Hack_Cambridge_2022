@@ -1,7 +1,8 @@
-import tensorflow as tf
 from keras.preprocessing.image import load_img, img_to_array
-
-model = tf.keras.models.load_model('FV.h5')
+import numpy as np
+from PIL import Image
+import pickle
+model = pickle.load(open("pickle_fruit_model", "rb"))
 
 import streamlit as st
 
@@ -9,9 +10,7 @@ st.write("App")
 st.write("Something")
 file = st.file_uploader("Pleasse upload an image file", type=["jpg", "png"])
 
-import cv2
-from PIL import Image, ImageOps
-import numpy as np
+
 
 labels = {0: 'apple', 1: 'banana', 2: 'beetroot', 3: 'bell pepper', 4: 'cabbage', 5: 'capsicum', 6: 'carrot',
           7: 'cauliflower', 8: 'chilli pepper', 9: 'corn', 10: 'cucumber', 11: 'eggplant', 12: 'garlic', 13: 'ginger',
