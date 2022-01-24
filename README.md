@@ -2,7 +2,7 @@
 
 This repository consists of two AI models we made in the Hackathon to help in the farming of Corn.
 
-The models are also deployed on to a web app which uscan be viewed at: https://farming-drone-ai.herokuapp.com/
+The models are also deployed on to a web app which can be viewed at: https://farming-drone-ai.herokuapp.com/
 
 The use of such models will be to be used in conjunction with drone footage to analyse crop-fields and map pests and weed infestation.
 
