@@ -7,6 +7,7 @@ The models are also deployed on to a web app which can be viewed at: https://far
 The use of such models will be to be used in conjunction with drone footage to analyse crop-fields and map pests and weed infestation.
 
 corn_leaf_disease_model determines whether a leaf is healthy or infected by pests
+
 seedling_detection_model classifies the seedlings into corn or type of weed
 
 The image data used to train the models were from these sources:
