@@ -3,10 +3,11 @@ from PIL import ImageOps, Image
 import tensorflow as tf
 
 from keras.models import load_model
+import streamlit as st
 
 model = load_model("model_corn_disease_selection")
 
-import streamlit as st
+
 
 st.write("Determine Whether a plant leaf is healthy or not")
 st.write("The AI Model used was trained on images of corn leaf taken from this website:")
