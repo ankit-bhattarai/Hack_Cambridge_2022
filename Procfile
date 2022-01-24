@@ -1,1 +1,1 @@
-web: gunicorn rps_app:server
+web: sh setup.sh && streamlit run app.py
