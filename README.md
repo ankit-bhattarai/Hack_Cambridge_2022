@@ -4,6 +4,8 @@ This repository consists of two AI models we made in the Hackathon to help in th
 
 The models are also deployed on to a web app which can be viewed at: https://farming-drone-ai.herokuapp.com/
 
+Our devpost submission can be viewed here: https://devpost.com/software/drones-internet-of-things-and-agriculture
+
 The use of such models will be to be used in conjunction with drone footage to analyse crop-fields and map pests and weed infestation.
 
 corn_leaf_disease_model determines whether a leaf is healthy or infected by pests
