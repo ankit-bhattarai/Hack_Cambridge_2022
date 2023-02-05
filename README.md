@@ -15,4 +15,4 @@ seedling_detection_model classifies the seedlings into corn or type of weed
 The image data used to train the models were from these sources:
   - https://www.kaggle.com/qramkrishna/corn-leaf-infection-dataset
   - https://www.kaggle.com/vbookshelf/v2-plant-seedlings-dataset
-  
+ 
